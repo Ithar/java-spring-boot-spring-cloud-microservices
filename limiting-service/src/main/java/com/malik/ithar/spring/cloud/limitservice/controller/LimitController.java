@@ -3,9 +3,11 @@ package com.malik.ithar.spring.cloud.limitservice.controller;
 import com.malik.ithar.spring.cloud.limitservice.business.Limit;
 import com.malik.ithar.spring.cloud.limitservice.business.LimitProperties;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/limiting-service/v1")
 public class LimitController {
 
     private final LimitProperties limitProperties;
@@ -14,7 +16,7 @@ public class LimitController {
         this.limitProperties = limitProperties;
     }
 
-    @GetMapping
+    @GetMapping("/limit")
     public Limit getLimit() {
         return new Limit(limitProperties.getMin(), limitProperties.getMax());
     }
