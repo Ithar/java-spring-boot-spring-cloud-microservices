@@ -1,17 +1,62 @@
 package com.malik.ithar.spring.cloud.convertor.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.malik.ithar.spring.cloud.convertor.domain.CurrencyConversion;
+import com.malik.ithar.spring.cloud.convertor.dto.ExchangeRateDTO;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
+import java.util.Objects;
+
+@Slf4j
 @RestController
 @RequestMapping("currency-convertor-service/v1")
 public class CurrencyConvertorController {
 
-    @GetMapping("/convert")
-    public String convert() {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyConvertorController.class);
 
-        return "Hello we are about convert";
+    @GetMapping("/convert/{from}/{to}")
+    public CurrencyConversion convert(@PathVariable String from, @PathVariable String to, @RequestParam(required = false) Integer quantity) throws Exception {
+
+        if (quantity == null) {
+            quantity = 1;
+        }
+
+        LOGGER.info("Converting: from to quantity [{} - {}] q={}", from, to, quantity);
+
+        String url = getExchangeRateUrl(from, to);
+
+        ResponseEntity<ExchangeRateDTO> responseEntity =  new RestTemplate().getForEntity(url, ExchangeRateDTO.class);
+
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
+            CurrencyConversion conversion = buildResponse(from, to, quantity, Objects.requireNonNull(responseEntity.getBody()));
+            LOGGER.info("Converting: from to quantity [{} - {}] q={} t={}]", from, to, quantity, conversion.getTotal());
+            return conversion;
+        }
+
+        throw new Exception("Unable to convert at present");
+    }
+
+    private CurrencyConversion buildResponse(String from, String to, Integer quantity, ExchangeRateDTO body) {
+
+        BigDecimal conversion = body.getConversion();
+
+        return CurrencyConversion
+                .builder()
+                .from(from)
+                .to(to)
+                .quantity(quantity)
+                .rate(body.getConversion())
+                .total(BigDecimal.valueOf(quantity).multiply(conversion))
+                .build();
+    }
+
+    private String getExchangeRateUrl(String from, String to) {
+        return String.format("http://localhost:8000/currency-exchange-service/v1/exchange/%s/%s", from, to);
     }
 
 }
