@@ -3,7 +3,7 @@ SPRING:MVN:MICROSERVICE
 
 ## Modules 
 - limiting-service
-- exchange-service  
+- exchange_rate-service  
 - config-server
 
 ## Local properties' git (set-up) config server
@@ -42,7 +42,7 @@ Stack  | version |
 Service Name | Port | Url | Supporting Url
 --- | --- | --- |--- |
 Limiting Service | 8080 | http://localhost:8080/limiting-service/v1/limit |
-Exchange Service | 8000 | http://localhost:8000/exchange-service/v1/exchange/{from}/{to} | http://localhost:8000/h2-console/
+Exchange Service | 8000 | http://localhost:8000/currency-exchange_rate-service/v1/exchange_rate/{from}/{to} | http://localhost:8000/h2-console/
 Config Server | 8888 | http://localhost:8888 | http://localhost:8888/limit-service/default
 
 

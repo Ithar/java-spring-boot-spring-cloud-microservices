@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-public class Exchange {
+public class ExchangeRate {
 
     @Id
     private Long id;
