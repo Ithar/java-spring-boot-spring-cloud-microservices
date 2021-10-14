@@ -45,7 +45,7 @@ public class CurrencyExchangeController {
         ExchangeRate exchange_rate = exchangeOpt.get();
         exchange_rate.setEnvironment(environment.getProperty("local.server.port"));
 
-        LOGGER.info("Exchanging from:{} to:{} = {}", from, to, exchange_rate.getConversion());
+        LOGGER.info("Exchanging from:{} to:{} = {}", from, to, exchange_rate.getRate());
 
         return exchange_rate;
     }

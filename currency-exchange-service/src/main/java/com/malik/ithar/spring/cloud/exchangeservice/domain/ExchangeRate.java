@@ -26,7 +26,7 @@ public class ExchangeRate {
     @Column(name = "currency_to")
     private String to;
 
-    private BigDecimal conversion; // TODO [IM 21--10-14] - Rename to rate
+    private BigDecimal rate;
 
     private String environment;
 }

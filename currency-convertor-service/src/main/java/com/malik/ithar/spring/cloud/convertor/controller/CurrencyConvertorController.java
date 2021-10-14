@@ -43,15 +43,15 @@ public class CurrencyConvertorController {
 
     private CurrencyConversion buildResponse(String from, String to, Integer quantity, ExchangeRateDTO body) {
 
-        BigDecimal conversion = body.getConversion();
+        BigDecimal rate = body.getRate();
 
         return CurrencyConversion
                 .builder()
                 .from(from)
                 .to(to)
                 .quantity(quantity)
-                .rate(body.getConversion())
-                .total(BigDecimal.valueOf(quantity).multiply(conversion))
+                .rate(rate)
+                .total(BigDecimal.valueOf(quantity).multiply(rate))
                 .build();
     }
 
