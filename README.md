@@ -39,11 +39,11 @@ Stack  | version |
 ## Application Run
 
 ## Application URL
-Service Name | Port | Url |
---- | --- | --- |
-Limiting Service | 8080 | http://localhost:8080/limiting-service/v1/limit
-Exchange Service | 8000 | http://localhost:8000/exchange-service/v1/exchange/{from}/{to}
-Config Server | 8888 | http://localhost:8888 or http://localhost:8888/limit-service/default
+Service Name | Port | Url | Supporting Url
+--- | --- | --- |--- |
+Limiting Service | 8080 | http://localhost:8080/limiting-service/v1/limit |
+Exchange Service | 8000 | http://localhost:8000/exchange-service/v1/exchange/{from}/{to} | http://localhost:8000/h2-console/
+Config Server | 8888 | http://localhost:8888 | http://localhost:8888/limit-service/default
 
 
 ## Application GIT branches

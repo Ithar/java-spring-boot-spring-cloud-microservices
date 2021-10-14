@@ -1,7 +1,7 @@
 package com.malik.ithar.spring.cloud.exchangeservice;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ExchangeServiceApplication {
