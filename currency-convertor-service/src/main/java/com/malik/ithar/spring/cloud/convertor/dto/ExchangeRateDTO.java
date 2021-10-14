@@ -11,6 +11,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class ExchangeRateDTO {
 
+    private String from;
+    private String to;
     private BigDecimal rate;
 
 }
