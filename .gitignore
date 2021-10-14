@@ -123,6 +123,7 @@ yarn-error.log*
 /src/test/javascript/coverage/
 /src/test/javascript/PhantomJS*/
 /currency-exchange-service/target/
+/currency-convertor-service/target/
 
 ######################
 # SASS
@@ -152,5 +153,6 @@ yarn-error.log*
 Thumbs.db
 # Folder config file
 Desktop.ini
+
 
 
