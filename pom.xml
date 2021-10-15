@@ -12,8 +12,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.malik.ithar</groupId>
-    <artifactId>spring.cloud</artifactId>
+    <groupId>com.malik.ithar.spring.cloud</groupId>
+    <artifactId>currency-conversion-root</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -22,6 +22,7 @@
         <module>currency-exchange-service</module>
         <module>currency-convertor-service</module>
         <module>config-server</module>
+        <module>eureka-server</module>
     </modules>
 
     <properties>
