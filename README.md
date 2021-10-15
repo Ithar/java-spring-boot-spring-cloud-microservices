@@ -45,7 +45,7 @@ Limiting Service | 8080 | http://localhost:8080/limiting-service/v1/limit |
 Currency Conversion Service | 8100 | http://localhost:8100/currency-convertor-service/v2/convert/usd/gbp?quantity=2 | http://localhost:8100/currency-convertor-service/v1/convert/usd/gbp?quantity=2
 Currency Exchange Service | 8000 | http://localhost:8000/currency-exchange_rate-service/v1/exchange_rate/eur/usd | http://localhost:8000/h2-console/
 Config Server | 8888 | http://localhost:8888 | http://localhost:8888/limit-service/default
-
+Eureka Server | 8761 | http://localhost:8761 | 
 
 ## Application GIT branches
 - main
