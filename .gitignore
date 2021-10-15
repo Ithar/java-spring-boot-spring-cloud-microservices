@@ -125,6 +125,7 @@ yarn-error.log*
 /currency-exchange-service/target/
 /currency-convertor-service/target/
 /eureka-server/target/
+/api-gateway/target/
 
 ######################
 # SASS

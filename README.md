@@ -1,10 +1,13 @@
 # java-spring-boot-spring-cloud-microservices
-SPRING:MVN:MICROSERVICE
+SPRINGBOOT:MVN:MICROSERVICE
 
 ## Modules 
-- limiting-service
-- exchange_rate-service  
 - config-server
+- eureka-server
+- api-gateway  
+- limiting-service
+- exchange-rate-service (Multiple instances)  
+- currency-conversion-service
 
 ## Local properties' git (set-up) config server
 ``` 
@@ -16,8 +19,10 @@ git commit -m 'Added local limit service properties file'
 
 ### Features
 - Config server linked to git repo reading properties file
-- 
-
+- Eureka naming sever
+- Feign client with load balancing
+- JPA h2
+- API gateway
 
 ## 
 
@@ -33,7 +38,6 @@ Stack  | version |
 *Build Tool* | Maven
 *CI* | n/a
 *Code Coverage* | n/a
-
 *Build env* | docker-compose
 
 ## Application Run

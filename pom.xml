@@ -23,6 +23,7 @@
         <module>currency-convertor-service</module>
         <module>config-server</module>
         <module>eureka-server</module>
+        <module>api-gateway</module>
     </modules>
 
     <properties>
