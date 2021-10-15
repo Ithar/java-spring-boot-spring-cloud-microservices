@@ -41,6 +41,7 @@ public class CurrencyConvertorControllerFeign {
                 .quantity(quantity)
                 .rate(exchangeRateDTO.getRate())
                 .total(BigDecimal.valueOf(quantity).multiply(exchangeRateDTO.getRate()))
+                .exchangeServer("Exchange Server ("+ exchangeRateDTO.getEnvironment() +")")
                 .build();
     }
 

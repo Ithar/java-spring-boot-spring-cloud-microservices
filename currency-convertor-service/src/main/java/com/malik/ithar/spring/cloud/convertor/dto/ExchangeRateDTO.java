@@ -14,5 +14,5 @@ public class ExchangeRateDTO {
     private String from;
     private String to;
     private BigDecimal rate;
-
+    private String environment;
 }

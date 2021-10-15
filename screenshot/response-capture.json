@@ -1,0 +1,22 @@
+{
+  "name" : "Currency Conversion Service",
+  "url" : "http://localhost:8100/currency-convertor-service/v2/convert/usd/gbp?quantity=2",
+  "response": {
+    "from": "usd",
+    "to": "gbp",
+    "quantity": 2,
+    "rate": 40.00,
+    "total": 80.00,
+    "exchangeServer":"Exchange Server (8000)"
+  },
+
+  "name2" : "Currency Exchange Service",
+  "ur2l" : "http://localhost:8000/currency-exchange-service/v1/exchange/eur/usd",
+  "response2": {
+    "id": 1002,
+    "from": "EUR",
+    "to": "USD",
+    "rate": 65.00,
+    "environment": "8000"
+  }
+}
