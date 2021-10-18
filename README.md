@@ -50,6 +50,8 @@ Currency Conversion Service | 8100 | http://localhost:8100/currency-convertor-se
 Currency Exchange Service | 8000,8001,8002 | http://localhost:8000/currency-exchange-service/v1/exchange/eur/usd | http://localhost:8000/h2-console/
 Config Server | 8888 | http://localhost:8888 | http://localhost:8888/limit-service/default
 Eureka Server | 8761 | http://localhost:8761 | 
+API Gateway | 8765 | http://localhost:8765/currency-convertor-service/currency-convertor-service/v2/convert/usd/gbp?quantity=2 <br /><br /> http://localhost:8765/currency-exchange-service/currency-exchange-service/v1/exchange/eur/usd  
+
 
 ## Application GIT branches
 - main
