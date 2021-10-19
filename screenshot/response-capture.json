@@ -1,6 +1,6 @@
 {
   "name" : "Currency Conversion Service",
-  "url" : "http://localhost:8100/currency-convertor-service/v2/convert/usd/gbp?quantity=2",
+  "url" : "http://localhost:8100/currency-convertor/v2/convert/usd/gbp?quantity=2",
   "response": {
     "from": "usd",
     "to": "gbp",
@@ -11,7 +11,7 @@
   },
 
   "name2" : "Currency Exchange Service",
-  "ur2l" : "http://localhost:8000/currency-exchange-service/v1/exchange/eur/usd",
+  "ur2l" : "http://localhost:8000/currency-exchange/v1/exchange/eur/usd",
   "response2": {
     "id": 1002,
     "from": "EUR",

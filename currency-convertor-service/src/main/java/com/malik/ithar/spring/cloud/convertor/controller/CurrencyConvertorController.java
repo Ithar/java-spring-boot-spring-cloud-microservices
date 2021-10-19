@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @Slf4j
 @RestController
-@RequestMapping("currency-convertor-service/v1")
+@RequestMapping("currency-convertor/v1")
 public class CurrencyConvertorController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyConvertorController.class);
@@ -56,7 +56,8 @@ public class CurrencyConvertorController {
     }
 
     private String getExchangeRateUrl(String from, String to) {
-        return String.format("http://localhost:8000/currency-exchange-service/v1/exchange/%s/%s", from, to);
+        // TODO [IM 21-10-19] - Get the name from the limiting service
+        return String.format("http://localhost:8000/currency-exchange-application/v1/exchange/%s/%s", from, to);
     }
 
 }

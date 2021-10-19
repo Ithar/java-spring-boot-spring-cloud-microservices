@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/currency-exchange-service/v1")
+@RequestMapping("/currency-exchange/v1")
 public class CurrencyExchangeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyExchangeController.class);

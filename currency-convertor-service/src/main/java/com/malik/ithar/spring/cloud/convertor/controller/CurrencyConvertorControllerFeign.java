@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 
 @Slf4j
 @RestController
-@RequestMapping("currency-convertor-service/v2")
+@RequestMapping("currency-convertor/v2")
 public class CurrencyConvertorControllerFeign {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyConvertorControllerFeign.class);
