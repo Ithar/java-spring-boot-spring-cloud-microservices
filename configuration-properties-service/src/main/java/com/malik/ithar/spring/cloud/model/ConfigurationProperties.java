@@ -1,4 +1,4 @@
-package com.malik.ithar.spring.cloud.limitservice.business;
+package com.malik.ithar.spring.cloud.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @Component
-public class LimitProperties {
+public class ConfigurationProperties {
 
     @Value("${limit.service.min:0}")
     private String min;

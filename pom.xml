@@ -18,7 +18,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>limiting-service</module> <!-- TODO [IM 21-10-19] - Rename to something more appropriate -->
+        <module>configuration-properties-service</module>
         <module>currency-exchange-service</module>
         <module>currency-convertor-service</module>
         <module>config-server</module>

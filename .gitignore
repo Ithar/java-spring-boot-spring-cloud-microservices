@@ -124,6 +124,7 @@ yarn-error.log*
 /src/test/javascript/PhantomJS*/
 /currency-exchange-service/target/
 /currency-convertor-service/target/
+/configuration-properties-service/target/
 /eureka-server/target/
 /api-gateway/target/
 
