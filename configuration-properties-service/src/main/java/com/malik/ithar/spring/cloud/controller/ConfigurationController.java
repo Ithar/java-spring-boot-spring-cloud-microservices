@@ -18,7 +18,11 @@ public class ConfigurationController {
 
     @GetMapping("/limit")
     public PropertiesResponse getLimit() {
-        return new PropertiesResponse(configurationProperties.getMin(), configurationProperties.getMax());
+
+        return new PropertiesResponse(
+                configurationProperties.getLockoutMax(),
+                configurationProperties.getLockoutDuration(),
+                configurationProperties.getMessage());
     }
 
 

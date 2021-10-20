@@ -1,6 +1,5 @@
 package com.malik.ithar.spring.cloud.model;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,11 +7,21 @@ import lombok.Setter;
 @Setter
 public class PropertiesResponse {
 
-    private int min;
-    private int max;
+    private int lockoutMaxAttempts;
+    private int lockoutDuration;
+    private String message;
+    private String status;
 
-    public PropertiesResponse(String min, String max) {
-       this.min = Integer.parseInt(min);
-       this.max = Integer.parseInt(max);
+    public PropertiesResponse(String lockoutMaxAttempts, int lockoutDuration, String msg) {
+       this.lockoutMaxAttempts = Integer.parseInt(lockoutMaxAttempts);
+       this.lockoutDuration = lockoutDuration;
+       this.message = msg;
+
+       if (msg.contains("CONFIG-SERVER-REPO")) {
+           this.status = "**** SUCCESS ****"; //  properties are obtained from config server
+       } else {
+           this.status = "**** FAIL ****";
+       }
+
     }
 }

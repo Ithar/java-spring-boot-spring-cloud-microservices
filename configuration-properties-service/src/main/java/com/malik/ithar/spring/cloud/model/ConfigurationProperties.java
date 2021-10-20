@@ -12,10 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConfigurationProperties {
 
-    @Value("${limit.service.min:0}")
-    private String min;
+    @Value("${lockout.max.attempt.number:0}")
+    private String lockoutMax;
 
-    @Value("${limit.service.max:0}")
-    private String max;
+    @Value("${lockout.duration.time.minutes:0}")
+    private Integer lockoutDuration;
+
+    @Value("${lockout.response.msg: This message is coming from 'DEFAULT' project java class}")
+    private String message;
 
 }
