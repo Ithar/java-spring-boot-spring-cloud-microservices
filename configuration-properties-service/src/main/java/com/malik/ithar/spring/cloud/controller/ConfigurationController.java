@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/limiting-service/v1")
+@RequestMapping("/configuration-properties/api/v1")
 public class ConfigurationController {
 
     private final ConfigurationProperties configurationProperties;
@@ -16,7 +16,7 @@ public class ConfigurationController {
         this.configurationProperties = configurationProperties;
     }
 
-    @GetMapping("/limit")
+    @GetMapping()
     public PropertiesResponse getLimit() {
 
         return new PropertiesResponse(

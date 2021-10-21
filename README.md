@@ -45,7 +45,7 @@ Stack  | version |
 ### Application URL
 Service Name | Port | Url | Supporting Url
 --- | --- | --- |--- |
-Configuration Properties Service | 8080 | http://localhost:8080/limiting-service/v1/limit |
+Configuration Properties Service | 8080 | http://localhost:8080/configuration-properties/api/v1 |
 Currency Conversion Service | 8100 | http://localhost:8100/currency-convertor/v2/convert/usd/gbp?quantity=2 | http://localhost:8100/currency-convertor/v1/convert/usd/gbp?quantity=2
 Currency Exchange Service | 8000,8001,8002 | http://localhost:8000/currency-exchange/v1/exchange/eur/usd | http://localhost:8000/h2-console/
 Config Server | 8888 | http://localhost:8888 | http://localhost:8888/configuration-properties-application/default <b/> http://localhost:8888/configuration-properties-application/stg
