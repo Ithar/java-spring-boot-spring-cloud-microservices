@@ -1,7 +1,9 @@
 package com.malik.ithar.spring.cloud.convertor.controller;
 
 import com.malik.ithar.spring.cloud.convertor.domain.CurrencyConversionResponse;
+import com.malik.ithar.spring.cloud.convertor.dto.ConfigurationPropertiesDTO;
 import com.malik.ithar.spring.cloud.convertor.dto.ExchangeRateDTO;
+import com.malik.ithar.spring.cloud.convertor.proxy.ConfigurationPropertiesProxy;
 import com.malik.ithar.spring.cloud.convertor.proxy.CurrencyExchangeProxy;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -18,9 +20,11 @@ public class CurrencyConvertorControllerFeign {
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyConvertorControllerFeign.class);
 
     private final CurrencyExchangeProxy currencyExchangeProxy;
+    private final ConfigurationPropertiesProxy configurationPropertiesProxy;
 
-    public CurrencyConvertorControllerFeign(CurrencyExchangeProxy currencyExchangeProxy) {
+    public CurrencyConvertorControllerFeign(CurrencyExchangeProxy currencyExchangeProxy, ConfigurationPropertiesProxy configurationPropertiesProxy) {
         this.currencyExchangeProxy = currencyExchangeProxy;
+        this.configurationPropertiesProxy = configurationPropertiesProxy;
     }
 
     @GetMapping("/convert/{from}/{to}")
@@ -32,7 +36,9 @@ public class CurrencyConvertorControllerFeign {
 
         LOGGER.info("Converting: from to quantity [{} - {}] q={}", from, to, quantity);
 
-        ExchangeRateDTO exchangeRateDTO = currencyExchangeProxy.exchangeValue(from, to);
+        ExchangeRateDTO exchangeRateDTO = currencyExchangeProxy.getExchangeValue(from, to);
+
+        ConfigurationPropertiesDTO configurationPropertiesDTO = configurationPropertiesProxy.getProperties();
 
         return CurrencyConversionResponse
                 .builder()
@@ -42,6 +48,7 @@ public class CurrencyConvertorControllerFeign {
                 .rate(exchangeRateDTO.getRate())
                 .total(BigDecimal.valueOf(quantity).multiply(exchangeRateDTO.getRate()))
                 .exchangeServer("Exchange Server ("+ exchangeRateDTO.getEnvironment() +")")
+                .message(configurationPropertiesDTO.getMessage())
                 .build();
     }
 

@@ -17,5 +17,6 @@ public class CurrencyConversionResponse {
     private BigDecimal rate;
     private BigDecimal total;
     private String exchangeServer;
+    private String message;
 
 }

@@ -1,23 +1,30 @@
 {
-  "name" : "Currency Conversion Service",
-  "url" : "http://localhost:8100/currency-convertor/v2/convert/usd/gbp?quantity=2",
+  "name": "Currency Conversion Service",
+  "url": "http://localhost:8100/currency-convertor/v2/convert/usd/gbp?quantity=2",
   "response": {
     "from": "usd",
     "to": "gbp",
     "quantity": 2,
     "rate": 40.00,
     "total": 80.00,
-    "exchangeServer":"Exchange Server (8000)",
+    "exchangeServer": "Exchange Server (8000)",
     "message": "This message is coming from 'CONFIG-SERVER-REPO' from the 'PROD' properties file"
   },
-
-  "name2" : "Currency Exchange Service",
-  "ur2l" : "http://localhost:8000/currency-exchange/v1/exchange/eur/usd",
+  "name2": "Currency Exchange Service",
+  "ur2l": "http://localhost:8000/currency-exchange/v1/exchange/eur/usd",
   "response2": {
     "id": 1002,
     "from": "EUR",
     "to": "USD",
     "rate": 65.00,
     "environment": "8000"
+  },
+  "name3": "Configuration Properties Service",
+  "url3": "http://localhost:8080/configuration-properties/api/v1",
+  "response3": {
+    "lockoutMaxAttempts": 10001,
+    "lockoutDuration": 1002,
+    "message": "This message is coming from 'CONFIG-SERVER-REPO' from the 'PROD' properties file",
+    "status": "**** SUCCESS ****"
   }
 }

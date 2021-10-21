@@ -12,5 +12,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CurrencyExchangeProxy {
 
     @GetMapping("/currency-exchange/v1/exchange/{from}/{to}")
-    ExchangeRateDTO exchangeValue(@PathVariable String from, @PathVariable String to);
+    ExchangeRateDTO getExchangeValue(@PathVariable String from, @PathVariable String to);
 }
