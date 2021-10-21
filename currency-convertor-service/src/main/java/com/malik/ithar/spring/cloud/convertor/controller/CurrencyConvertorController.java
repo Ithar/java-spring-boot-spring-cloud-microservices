@@ -1,6 +1,6 @@
 package com.malik.ithar.spring.cloud.convertor.controller;
 
-import com.malik.ithar.spring.cloud.convertor.domain.CurrencyConversion;
+import com.malik.ithar.spring.cloud.convertor.domain.CurrencyConversionResponse;
 import com.malik.ithar.spring.cloud.convertor.dto.ExchangeRateDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class CurrencyConvertorController {
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyConvertorController.class);
 
     @GetMapping("/convert/{from}/{to}")
-    public CurrencyConversion convert(@PathVariable String from, @PathVariable String to, @RequestParam(required = false) Integer quantity) throws Exception {
+    public CurrencyConversionResponse convert(@PathVariable String from, @PathVariable String to, @RequestParam(required = false) Integer quantity) throws Exception {
 
         if (quantity == null) {
             quantity = 1;
@@ -33,7 +33,7 @@ public class CurrencyConvertorController {
         ResponseEntity<ExchangeRateDTO> responseEntity =  new RestTemplate().getForEntity(url, ExchangeRateDTO.class);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            CurrencyConversion conversion = buildResponse(from, to, quantity, Objects.requireNonNull(responseEntity.getBody()));
+            CurrencyConversionResponse conversion = buildResponse(from, to, quantity, Objects.requireNonNull(responseEntity.getBody()));
             LOGGER.info("Converting: from to quantity [{} - {}] q={} t={}]", from, to, quantity, conversion.getTotal());
             return conversion;
         }
@@ -41,11 +41,11 @@ public class CurrencyConvertorController {
         throw new Exception("Unable to convert at present");
     }
 
-    private CurrencyConversion buildResponse(String from, String to, Integer quantity, ExchangeRateDTO body) {
+    private CurrencyConversionResponse buildResponse(String from, String to, Integer quantity, ExchangeRateDTO body) {
 
         BigDecimal rate = body.getRate();
 
-        return CurrencyConversion
+        return CurrencyConversionResponse
                 .builder()
                 .from(from)
                 .to(to)

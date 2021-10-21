@@ -1,6 +1,6 @@
 package com.malik.ithar.spring.cloud.convertor.controller;
 
-import com.malik.ithar.spring.cloud.convertor.domain.CurrencyConversion;
+import com.malik.ithar.spring.cloud.convertor.domain.CurrencyConversionResponse;
 import com.malik.ithar.spring.cloud.convertor.dto.ExchangeRateDTO;
 import com.malik.ithar.spring.cloud.convertor.proxy.CurrencyExchangeProxy;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ public class CurrencyConvertorControllerFeign {
     }
 
     @GetMapping("/convert/{from}/{to}")
-    public CurrencyConversion convertViaFeign(@PathVariable String from, @PathVariable String to, @RequestParam(required = false) Integer quantity) {
+    public CurrencyConversionResponse convertViaFeign(@PathVariable String from, @PathVariable String to, @RequestParam(required = false) Integer quantity) {
 
         if (quantity == null) {
             quantity = 1;
@@ -34,7 +34,7 @@ public class CurrencyConvertorControllerFeign {
 
         ExchangeRateDTO exchangeRateDTO = currencyExchangeProxy.exchangeValue(from, to);
 
-        return CurrencyConversion
+        return CurrencyConversionResponse
                 .builder()
                 .from(from)
                 .to(to)
