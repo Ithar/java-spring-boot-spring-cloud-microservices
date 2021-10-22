@@ -40,4 +40,20 @@
         <!--        </dependency>-->
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- Needed for creating docker images-->
+                <configuration>
+                    <image>
+                        <name>ithar/java-spring-boot-spring-cloud-microservices-${project.artifactId}:${project.version}</name>
+                        <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                    </image>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

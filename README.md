@@ -37,14 +37,32 @@ Stack  | version |
 *DB* | n/a
 *Server* | Jetty (embedded)
 *Build Tool* | Maven
+*Docker* | Docker-compose
 *CI* | n/a
 *Code Coverage* | n/a
 *Build env* | docker-compose
 
-### Application Run
-Spring boot application start
+### Application Build/Run (Docker)
 
-`mvn -gs /usr/local/Cellar/maven/3.6.3_1/libexec/conf/settings.original.xml clean install` 
+```
+cd <MODULE_ROOT> 
+mvn -gs /usr/local/Cellar/maven/3.6.3_1/libexec/conf/settings.original.xml spring-boot:build-image -DskipTests
+
+docker push ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0-SNAPSHOT 
+docker push ithar/java-spring-boot-spring-cloud-microservices-config-server:1.0-SNAPSHOT
+docker push ithar/java-spring-boot-spring-cloud-microservices-configuration-properties-service:1.0-SNAPSHOT
+docker push ithar/java-spring-boot-spring-cloud-microservices-currency-convertor-service:1.0-SNAPSHOT
+docker push ithar/java-spring-boot-spring-cloud-microservices-currency-exchange-rate-service:1.0-SNAPSHOT
+docker push ithar/java-spring-boot-spring-cloud-microservices-eureka-server:1.0-SNAPSHOT
+
+cd docker 
+docker-compose up
+```
+
+### Application Run (Manual)
+Spring-boot application start 
+
+`mvn -gs /usr/local/Cellar/maven/3.6.3_1/libexec/conf/settings.original.xml clean install`
 
 ### Application URL
 Service Name | Port | Url | Supporting Url
@@ -57,7 +75,6 @@ Config Server | 8888 | http://localhost:8888 | http://localhost:8888/configurati
 Eureka Server | 8761 | http://localhost:8761 |
 Zipkin (docker) | 9411 |  http://localhost:9411/zipkin/
   
-
 
 ### Application GIT branches
 - main
