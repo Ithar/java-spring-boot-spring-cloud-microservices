@@ -6,7 +6,7 @@ SPRINGBOOT:MVN:MICROSERVICE:EUREKA:API-GATEWAY:CONFIG-SERVER:MULTI-MODULE
 - Configuration service exposing values from the Config server with retry resilience
 - Eureka naming sever
 - Zipkin docker instance   
-- API gateway with route configuration & global logging
+- Spring cloud API gateway with route configuration & global logging
 - Feign client with load balancing (currency-conversion-application)
 - Exchange service with multiple instances running on different ports (currency-exchange-service)
 - JPA h2 (currency-exchange-service)
