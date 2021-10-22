@@ -68,7 +68,7 @@ Spring-boot application start
 Service Name | Port | Url | Supporting Url
 --- | --- | --- |--- |
 Configuration Properties Service | 8080 | http://localhost:8080/configuration-properties/api/v1 |
-Currency Conversion Service | 8100 | http://localhost:8100/currency-convertor/v2/convert/usd/gbp?quantity=2 | http://localhost:8100/currency-convertor/v1/convert/usd/gbp?quantity=2
+Currency Convertor Service | 8100 | http://localhost:8100/currency-convertor/v2/convert/usd/gbp?quantity=2 | http://localhost:8100/currency-convertor/v1/convert/usd/gbp?quantity=2
 Currency Exchange Service | 8000,8001,8002 | http://localhost:8000/currency-exchange/v1/exchange/eur/usd | http://localhost:8000/h2-console/
 API Gateway | 8765 | http://localhost:8765/convertor-api/v2/convert/usd/gbp?quantity=2 <br /><br /> http://localhost:8765/exchanger-api/v1/exchange/eur/usd
 Config Server | 8888 | http://localhost:8888 | http://localhost:8888/configuration-properties-application/default <b/> http://localhost:8888/configuration-properties-application/stg
