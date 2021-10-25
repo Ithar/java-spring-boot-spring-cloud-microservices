@@ -10,6 +10,7 @@ SPRINGBOOT:MVN:MICROSERVICE:EUREKA:API-GATEWAY:CONFIG-SERVER:MULTI-MODULE
 - Feign client with load balancing (currency-conversion-application)
 - Exchange service with multiple instances running on different ports (currency-exchange-service)
 - JPA h2 (currency-exchange-service)
+- Docker compose container builds 
 
 ### Modules 
 - config-server

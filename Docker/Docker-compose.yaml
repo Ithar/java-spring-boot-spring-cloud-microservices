@@ -1,0 +1,67 @@
+version: "3.7"
+
+# https://github.com/in28minutes/spring-microservices-v2/blob/main/04.docker/backup/docker-compose-06-final.yaml
+
+services:
+
+  eureka-naming-server:
+    image: ithar/java-spring-boot-spring-cloud-microservices-eureka-server:1.0-SNAPSHOT
+    ports:
+      - "8761:8761"
+    networks:
+      - currency-application-network
+
+  config-server:
+    image: ithar/java-spring-boot-spring-cloud-microservices-config-server:1.0-SNAPSHOT
+    ports:
+      - "8888:8888"
+    environment:
+      SPRING.CLOUD.CONFIG.SERVER.GIT.URI: /var/tmp
+    volumes:
+      - /Users/ithar.malik/dev/personal/java/java-spring-cloud/git-localconfig-repo:/var/tmp
+    networks:
+      - currency-application-network
+
+#  api-gateway:
+#    image: ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0-SNAPSHOT
+#    ports:
+#      - "8765:8765"
+#    networks:
+#      - currency-application-network
+#
+#  cconfiguration-properties-service:
+#    image: ithar/java-spring-boot-spring-cloud-microservices-configuration-properties-service:1.0-SNAPSHOT
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - config-server
+#    networks:
+#      - currency-application-network
+#
+#  currency-convertor-service:
+#    image: ithar/java-spring-boot-spring-cloud-microservices-currency-convertor-service:1.0-SNAPSHOT
+#    ports:
+#      - "8100:8100"
+#    depends_on:
+#      - eureka-naming-server
+#    networks:
+#      - currency-application-network
+#
+#  currency-exchange-server:
+#    image: ithar/java-spring-boot-spring-cloud-microservices-currency-exchange-rate-service:1.0-SNAPSHOT
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - eureka-naming-server
+#    networks:
+#      - currency-application-network
+#
+  openzipkin:
+    image: openzipkin/zipkin:2.23
+    ports:
+      - "9411:9411"
+    networks:
+      - currency-application-network
+
+networks:
+  currency-application-network:
