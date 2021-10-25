@@ -22,17 +22,27 @@ services:
     networks:
       - currency-application-network
 
-#  api-gateway:
-#    image: ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0-SNAPSHOT
-#    ports:
-#      - "8765:8765"
-#    networks:
-#      - currency-application-network
-#
+  api-gateway:
+    image: ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0-SNAPSHOT
+    ports:
+      - "8765:8765"
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://eureka-naming-server:8761/eureka
+      SPRING.ZIPKIN.BASE-URL: http://openzipkin:9411/
+    depends_on:
+      - eureka-naming-server
+      - openzipkin
+    networks:
+      - currency-application-network
+
 #  cconfiguration-properties-service:
 #    image: ithar/java-spring-boot-spring-cloud-microservices-configuration-properties-service:1.0-SNAPSHOT
 #    ports:
 #      - "8080:8080"
+#    environment:
+##      SPRING.CONFIG.IMPORT: optional:configserver:http://config-server:8888
+#      SPRING.CONFIG.IMPORT: configserver:http://config-server:8888
+#      SPRING.ZIPKIN.BASE-URL: http://openzipkin:9411
 #    depends_on:
 #      - config-server
 #    networks:
