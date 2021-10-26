@@ -35,37 +35,48 @@ services:
     networks:
       - currency-application-network
 
-#  cconfiguration-properties-service:
-#    image: ithar/java-spring-boot-spring-cloud-microservices-configuration-properties-service:1.0-SNAPSHOT
-#    ports:
-#      - "8080:8080"
-#    environment:
-##      SPRING.CONFIG.IMPORT: optional:configserver:http://config-server:8888
-#      SPRING.CONFIG.IMPORT: configserver:http://config-server:8888
-#      SPRING.ZIPKIN.BASE-URL: http://openzipkin:9411
-#    depends_on:
-#      - config-server
-#    networks:
-#      - currency-application-network
-#
-#  currency-convertor-service:
-#    image: ithar/java-spring-boot-spring-cloud-microservices-currency-convertor-service:1.0-SNAPSHOT
-#    ports:
-#      - "8100:8100"
-#    depends_on:
-#      - eureka-naming-server
-#    networks:
-#      - currency-application-network
-#
-#  currency-exchange-server:
-#    image: ithar/java-spring-boot-spring-cloud-microservices-currency-exchange-rate-service:1.0-SNAPSHOT
-#    ports:
-#      - "8000:8000"
-#    depends_on:
-#      - eureka-naming-server
-#    networks:
-#      - currency-application-network
-#
+  # TODO [IM 21-10-26] - Investigate why we do not connect to the config server (i.e. removing the optional this fails)
+  configuration-properties-service:
+    image: ithar/java-spring-boot-spring-cloud-microservices-configuration-properties-service:1.0-SNAPSHOT
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING.CONFIG.IMPORT: optional:configserver:http://config-server:8888
+      SPRING.ZIPKIN.BASE-URL: http://openzipkin:9411/
+    depends_on:
+      - config-server
+    networks:
+      - currency-application-network
+
+  currency-convertor-service:
+    image: ithar/java-spring-boot-spring-cloud-microservices-currency-convertor-service:1.0.1-SNAPSHOT
+    ports:
+      - "8100:8100"
+    environment:
+      FEIGN.CLIENT.CONFIGURATION.PROPERTIES.APPLICATION.URL: http://configuration-properties-service:8080
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://eureka-naming-server:8761/eureka
+      SPRING.ZIPKIN.BASE-URL: http://openzipkin:9411/
+    depends_on:
+      - currency-exchange-server
+      - configuration-properties-service
+      - eureka-naming-server
+      - openzipkin
+    networks:
+      - currency-application-network
+
+  currency-exchange-server:
+    image: ithar/java-spring-boot-spring-cloud-microservices-currency-exchange-service:1.0.1-SNAPSHOT
+    ports:
+      - "8000:8000"
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://eureka-naming-server:8761/eureka
+      SPRING.ZIPKIN.BASE-URL: http://openzipkin:9411/
+    depends_on:
+      - eureka-naming-server
+      - openzipkin
+    networks:
+      - currency-application-network
+
   openzipkin:
     image: openzipkin/zipkin:2.23
     ports:

@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>currency-exchange-service</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

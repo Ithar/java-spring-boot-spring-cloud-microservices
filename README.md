@@ -1,5 +1,5 @@
 # java-spring-boot-spring-cloud-microservices
-SPRINGBOOT:MVN:MICROSERVICE:EUREKA:API-GATEWAY:CONFIG-SERVER:MULTI-MODULE
+SPRINGBOOT:MVN:MICROSERVICE:EUREKA:API-GATEWAY:CONFIG-SERVER:ZIPKIN:MULTI-MODULE
 
 ### Features
 - Config server linked to git repo reading 'stg' properties file {configuration-properties-application-prod.properties}
@@ -52,8 +52,8 @@ mvn -gs /usr/local/Cellar/maven/3.6.3_1/libexec/conf/settings.original.xml sprin
 docker push ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0-SNAPSHOT 
 docker push ithar/java-spring-boot-spring-cloud-microservices-config-server:1.0-SNAPSHOT
 docker push ithar/java-spring-boot-spring-cloud-microservices-configuration-properties-service:1.0-SNAPSHOT
-docker push ithar/java-spring-boot-spring-cloud-microservices-currency-convertor-service:1.0-SNAPSHOT
-docker push ithar/java-spring-boot-spring-cloud-microservices-currency-exchange-rate-service:1.0-SNAPSHOT
+docker push ithar/java-spring-boot-spring-cloud-microservices-currency-convertor-service:1.0.1-SNAPSHOT
+docker push ithar/java-spring-boot-spring-cloud-microservices-currency-exchange-service:1.0.1-SNAPSHOT
 docker push ithar/java-spring-boot-spring-cloud-microservices-eureka-server:1.0-SNAPSHOT
 
 cd docker 
@@ -79,4 +79,4 @@ API Gateway | 8765 | http://localhost:8765/convertor-api/v2/convert/usd/gbp?quan
 ### Application GIT branches
 - main
 
-### Further enhancements 
+### Further enhancements
