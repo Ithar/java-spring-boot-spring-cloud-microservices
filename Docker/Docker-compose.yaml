@@ -23,10 +23,11 @@ services:
       - currency-application-network
 
   api-gateway:
-    image: ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0-SNAPSHOT
+    image: ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0.1-SNAPSHOT
     ports:
       - "8765:8765"
     environment:
+      CURRENCY.CONVERTOR.URL: http://currency-convertor-service:8100
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://eureka-naming-server:8761/eureka
       SPRING.ZIPKIN.BASE-URL: http://openzipkin:9411/
     depends_on:

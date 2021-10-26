@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>api-gateway</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

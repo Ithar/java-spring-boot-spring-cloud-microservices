@@ -49,7 +49,7 @@ Stack  | version |
 cd <MODULE_ROOT> 
 mvn -gs /usr/local/Cellar/maven/3.6.3_1/libexec/conf/settings.original.xml spring-boot:build-image -DskipTests
 
-docker push ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0-SNAPSHOT 
+docker push ithar/java-spring-boot-spring-cloud-microservices-api-gateway:1.0.1-SNAPSHOT 
 docker push ithar/java-spring-boot-spring-cloud-microservices-config-server:1.0-SNAPSHOT
 docker push ithar/java-spring-boot-spring-cloud-microservices-configuration-properties-service:1.0-SNAPSHOT
 docker push ithar/java-spring-boot-spring-cloud-microservices-currency-convertor-service:1.0.1-SNAPSHOT
@@ -69,7 +69,7 @@ Spring-boot application start
 Service Name | Port | Url | Supporting Url
 --- | --- | --- |--- |
 Eureka Server | 8761 | http://localhost:8761 |
-Zipkin (docker) | 9411 |  http://localhost:9411/zipkin/
+Zipkin (docker) | 9411 |  http://localhost:9411/zipkin/ | docker container run -p 9411:9411 -d openzipkin/zipkin:2.23
 Config Server | 8888 | http://localhost:8888 | http://localhost:8888/configuration-properties-application/default <b/> http://localhost:8888/configuration-properties-application/stg
 Configuration Properties Service | 8080 | http://localhost:8080/configuration-properties/api/v1 |
 Currency Convertor Service | 8100 | http://localhost:8100/currency-convertor/v2/convert/usd/gbp?quantity=2 | http://localhost:8100/currency-convertor/v1/convert/usd/gbp?quantity=2
