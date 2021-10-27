@@ -11,6 +11,7 @@ SPRINGBOOT:MVN:MICROSERVICE:EUREKA:API-GATEWAY:CONFIG-SERVER:ZIPKIN:MULTI-MODULE
 - Exchange service with multiple instances running on different ports (currency-exchange-service)
 - JPA h2 (currency-exchange-service)
 - Docker compose container builds 
+- Docker-Hub images used in docker-compose
 
 ### Modules 
 - config-server
